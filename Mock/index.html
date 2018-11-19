@@ -13,8 +13,8 @@
     <!-- body code goes here -->
   <header class="bg-secondary text-white text-right">
     <ul class="list-inline font-weight-bold">
-      <li class="list-inline-item"><p>ユーザー名 さん</p></li>
-      <li class="list-inline-item"><u class="text-danger">ログアウト</u></li>
+      <li class="list-inline-item"><p>${} さん</p></li>
+      <li class="list-inline-item"><a href="index.html"><u class="text-danger">ログアウト</u></a></li>
     </ul>
   </header>
   <main>
@@ -32,10 +32,11 @@
       </tr>
       <tr>
         <th>生年月日</th>
-        <td><input type="text" value="年/月/日" style="width: 170px;">　〜　　<input type="text" value="年/月/日" style="width: 170px;"></td>
+        <td><input type="date" value="年/月/日" style="width: 170px;">　〜　　<input type="date" value="年/月/日" style="width: 170px;"></td>
       </tr>
     </table>
     </div>
+
     <div style="text-align: right; padding-right: 20px;"><input type="button" value="検索" style="width: 200px;"></div>
     <p style="border-bottom: solid 1px; padding-top: 30px;"></p>
     <div style="text-align: center;">
