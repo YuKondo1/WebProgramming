@@ -1,57 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ユーザ新規登録</title>
     <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <style type="text/css">
-    </style>
   </head>
   <body>
     <!-- body code goes here -->
-  <header class="bg-secondary text-white text-right" style="width: 500px;">
+  <header class="bg-secondary text-white text-right">
     <ul class="list-inline font-weight-bold">
-      <li class="list-inline-item"><p>ユーザー名 さん</p></li>
-      <li class="list-inline-item"><a href="index.html"><u class="text-danger">ログアウト</u></a></li>
+      <li class="list-inline-item"><p>${userInfo.name} さん</p></li>
+      <li class="list-inline-item"><a href="LogoutServlet"><u class="text-danger">ログアウト</u></a></li>
     </ul>
   </header>
+  <main>
   <h1 class="text-center" style="margin: 20px;"><strong>ユーザー新規登録</strong></h1>
-  <div style="margin-top: 50px;">
-  <table height="100" border="0" cellpadding="10" cellspacing="10">
-  <tbody>
+
+  <form action="UserRegisterServlet" method="post">
+
+  <div style="margin-top: 50px; width: auto;">
+  <table width="100%" height="100" border="0" cellpadding="10" cellspacing="10">
     <tr>
-      <td width="250" class="text-left">ログインID</td>
-      <td width="250"><input type="text"></td>
+      <th width="250" class="text-center">ログインID</th>
+      <td width="250"><input type="text" name="id"></td>
     </tr>
     <tr>
-      <td class="text-left">パスワード</td>
-      <td><input type="password"></td>
+      <th  class="text-center">パスワード</th>
+      <td><input type="password" name="password"></td>
     </tr>
     <tr>
-      <td class="text-left">パスワード（確認）</td>
-      <td><input type="password"></td>
+      <th  class="text-center">パスワード（確認）</th>
+      <td><input type="password" name="isPassword"></td>
     </tr>
     <tr>
-      <td class="text-left">ユーザ名</td>
-      <td><input type="text"></td>
+      <th  class="text-center">ユーザ名</th>
+      <td><input type="text" name="name"></td>
     </tr>
     <tr>
-      <td class="text-left">生年月日</td>
-      <td><input type="text"></td>
+      <th  class="text-center">生年月日</th>
+      <td><input type="date" name="birthDate"></td>
     </tr>
-  </tbody>
   </table>
   </div>
 
-  <div style="text-align: center; width: 500px; margin-top: 50px;">
-    <input type="button" onclick="location.href='index.html'"value="登録"
-  type="button" onclick="location.href='index.html'"value="ログイン" style="width: 100px; padding: 2px,5px,2px,5px">
+  <div style="text-align: center; margin-top: 50px;">
+    <input type="submit" value="登録"style="width: 100px; padding: 2px,5px,2px,5px;">
   </div>
-  <p><a href="index.html"><u>戻る</u></a></p>
+  </form>
+  <p style="margin: 50px 20px;"><a href="UserListServlet"><u>戻る</u></a></p>
+  </main>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <!-- Include all compiled plugins (below), or include individual files as needed -->
