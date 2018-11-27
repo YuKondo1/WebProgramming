@@ -148,7 +148,7 @@ public class UserDao {
 			String password = rs.getString("password");
 			String createDate = rs.getString("create_date");
 			String updateDate = rs.getString("update_date");
-			return new User(id, name, loginId, birthDate, password, createDate, updateDate);
+			return new User(id, loginId, name, birthDate, password, createDate, updateDate);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -245,7 +245,7 @@ public class UserDao {
 	/**
 	*ユーザ情報をid,name,birth_dateで検索
 	*/
-	public List<User> findUsers(String targetIdP, String targetNameP, String targetBirthDateP) {
+	public List<User> findUsers(String targetIdP, String targetNameP, String targetBirthDateBP, String targetBirthDateAP) {
 		Connection conn = null;
 		List<User> userList = new ArrayList<User>();
 		try {
@@ -257,11 +257,11 @@ public class UserDao {
 			if (!targetNameP.equals("")) {
 				sql += " and name LIKE '%" + targetNameP + "%'";
 			}
-			if (!targetBirthDateP.equals("")) {
-				sql += " and birth_date >= '" + targetBirthDateP + "'";
+			if (!targetBirthDateBP.equals("")) {
+				sql += " and birth_date >= '" + targetBirthDateBP + "'";
 			}
-			if (!targetBirthDateP.equals("")) {
-				sql += " and birth_date <= '" + targetBirthDateP + "'";
+			if (!targetBirthDateAP.equals("")) {
+				sql += " and birth_date <= '" + targetBirthDateAP + "'";
 			}
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <th>生年月日</th>
-        <td><input type="date" name="birthDate" style="width: 170px;">　〜　　<input type="date" style="width: 170px;"></td>
+        <td><input type="date" name="birthDateB" style="width: 170px;">　〜　　<input type="date" name="birthDateA" style="width: 170px;"></td>
       </tr>
     </table>
     </div>
@@ -66,10 +66,10 @@
                      <!-- TODO 未実装；ログインボタンの表示制御を行う -->
                      <td>
                        <a class="btn btn-primary" href="UserDetailServlet?id=${user.id}" style="margin: 0px 10px">詳細</a>
-                       <c:if test="${user.loginId == userInfo.liginId}">
+                       <c:if test="${user.loginId == userInfo.loginId}">
                        <a class="btn btn-success" href="UserUpdateServlet?id=${user.id}" style="margin-right: 10px">更新</a>
                        </c:if>
-                       <c:if test="${userInfo.liginId == 'admin'}">
+                       <c:if test="${userInfo.loginId == 'admin'}">
                        <a class="btn btn-success" href="UserUpdateServlet?id=${user.id}" style="margin-right: 10px">更新</a>
                        <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
                        </c:if>

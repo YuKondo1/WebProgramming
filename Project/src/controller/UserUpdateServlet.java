@@ -32,7 +32,7 @@ public class UserUpdateServlet extends HttpServlet {
 	 */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	request.setCharacterEncoding("UTF-8");
     	String id = request.getParameter("id");
     	UserDao userDao = new UserDao();
 		User userinfo = userDao.findById(id);
@@ -44,13 +44,26 @@ public class UserUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// URLから受け取る
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String oldPassword = request.getParameter("password");
+		String isPassword = request.getParameter("isPassword");
 		String name = request.getParameter("name");
 		String birthDate = request.getParameter("birthDate");
 
 
 		UserDao userDao = new UserDao();
+
+		if (!oldPassword.equals(isPassword) || id == "" || oldPassword == "" || isPassword == "" || name == "" || birthDate == "") {
+			// リクエストスコープにエラーメッセージをセット
+			request.setAttribute("errMsg", "入力された内容は正しくありません");
+
+			// ログインjspにフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userUpdate.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		String password = userDao.setPassword(oldPassword);
 		userDao.infoUpdate(name, birthDate, password, id);
 
 		response.sendRedirect("UserListServlet");

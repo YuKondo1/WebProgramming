@@ -13,7 +13,7 @@
     <!-- body code goes here -->
   <main>
   <h1 class="text-center" style="margin-top: 50px;"><strong>ログイン画面</strong></h1>
-	<c:if test="${errMsg != null}" >
+	<c:if test="${errMsg != null}">
 	    <div class="alert alert-danger" role="alert">
 		  ${errMsg}
 		</div>

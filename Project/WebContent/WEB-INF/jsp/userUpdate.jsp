@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,6 +19,11 @@
   </header>
   <main>
   <h1 class="text-center" style="margin: 20px;"><strong>ユーザ情報更新</strong></h1>
+	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
   <form action="UserUpdateServlet" method="post">
   <input type="hidden" name="id"value="${user.id}">
   <div style="margin-top: 50px;">
@@ -33,7 +38,7 @@
     </tr>
     <tr>
       <td class="text-center">パスワード（確認）</td>
-      <td><input type="password"></td>
+      <td><input type="password" name="isPassword"></td>
     </tr>
     <tr>
       <td class="text-center">ユーザ名</td>

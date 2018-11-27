@@ -58,9 +58,10 @@ public class UserListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String loginId = request.getParameter("loginId");
 		String name = request.getParameter("name");
-		String birthDate = request.getParameter("birthDate");
+		String birthDateB = request.getParameter("birthDateB");
+		String birthDateA = request.getParameter("birthDateA");
 		UserDao userDao = new UserDao();
-		List<User> user = userDao.findUsers(loginId, name, birthDate);
+		List<User> user = userDao.findUsers(loginId, name, birthDateB, birthDateA);
 
 		request.setAttribute("userList", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userList.jsp");

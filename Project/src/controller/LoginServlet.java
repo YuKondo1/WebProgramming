@@ -56,10 +56,11 @@ public class LoginServlet extends HttpServlet {
 
 		// リクエストパラメータの入力項目を取得
 		String loginId = request.getParameter("loginId");
-		String password = request.getParameter("password");
+		String oldPassword = request.getParameter("password");
 
 		// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
 		UserDao userDao = new UserDao();
+		String password = userDao.setPassword(oldPassword);
 		User user = userDao.findByLoginInfo(loginId, password);
 
 		/** テーブルに該当のデータが見つからなかった場合 **/

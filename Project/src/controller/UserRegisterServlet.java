@@ -39,6 +39,7 @@ public class UserRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String oldPassword = request.getParameter("password");
 		String isPassword = request.getParameter("isPassword");
@@ -47,7 +48,7 @@ public class UserRegisterServlet extends HttpServlet {
 
 		UserDao userDao = new UserDao();
 		User isId = userDao.findUser(id);
-		if (isId != null || isPassword == oldPassword || id == "" || oldPassword == "" || isPassword == "" || name == "" || birthDate == "") {
+		if (isId != null || !oldPassword.equals(isPassword) || id == "" || oldPassword == "" || isPassword == "" || name == "" || birthDate == "") {
 			// リクエストスコープにエラーメッセージをセット
 			request.setAttribute("errMsg", "入力された内容は正しくありません");
 
